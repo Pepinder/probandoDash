@@ -63,14 +63,14 @@ jobs:
 
       
       - name: Login to Azure
-        uses: azure/login@v1
+        uses: azure/login@v2
         with:
           client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_C64EBCAC063542B2BAC540F91F2A11EB }}
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_74A847B32E8F48BDA2BBD7A981F460C2 }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_6BEAF13EFE954C2EAA22F533B324DF22 }}
 
       - name: 'Deploy to Azure Web App'
-        uses: azure/webapps-deploy@v3
+        uses: azure/webapps-deploy@v2
         id: deploy-to-webapp
         with:
           app-name: 'dashcookiedata'
