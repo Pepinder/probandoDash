@@ -7,7 +7,6 @@ import os
 
 # Leer los datos
 df = pd.read_csv('raw_data/datosEncuestaGalleta.csv')
-port = int(os.environ.get("PORT", 8050))
 
 # Remover espacios en los nombres de las columnas
 df.columns = df.columns.str.strip()
@@ -119,4 +118,4 @@ def update_content(selected_age_range, selected_column):
 
 # Ejecutar la aplicación
 if __name__ == '__main__':
-    app.run_server(debug=True, host='0.0.0.0', port=port)
+    app.run_server
