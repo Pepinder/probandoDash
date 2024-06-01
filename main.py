@@ -118,4 +118,4 @@ def update_content(selected_age_range, selected_column):
 
 # Ejecutar la aplicación
 if __name__ == '__main__':
-    app.run_server
+    app.run_server(debug=True)
