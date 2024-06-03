@@ -3,11 +3,11 @@ from dash import dcc, html
 import pandas as pd
 import plotly.express as px
 from dash.dependencies import Input, Output
+from flask import Flask
 import os
-
 # Leer los datos
 df = pd.read_csv('raw_data/datosEncuestaGalleta.csv')
-
+flask_server = Flask(__name__)
 # Remover espacios en los nombres de las columnas
 df.columns = df.columns.str.strip()
 
@@ -40,7 +40,7 @@ for column in columns_to_split:
     df[column] = df[column].astype(str).str.split(';')
 
 # Inicializar la aplicación Dash
-app = dash.Dash(__name__)
+app = dash.Dash(__name__, server=flask_server)
 
 # Definir el layout de la aplicación
 app.layout = html.Div(children=[
@@ -117,5 +117,4 @@ def update_content(selected_age_range, selected_column):
 
 
 # Ejecutar la aplicación
-if __name__ == '__main__':
-    app.run_server(debug=True)
+server = app.server
